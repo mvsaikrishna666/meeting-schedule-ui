@@ -3,7 +3,7 @@ import AntdTextArea from "../antdTextArea/antdTextArea";
 import AntdInput from "../atndInput/input";
 import { Button } from "antd";
 
-const CreateMeetingForm = ({ formValues, setFormValues,handleSubmit }) => {
+const CreateMeetingForm = ({ formValues, setFormValues, handleSubmit }) => {
   return (
     <div>
       <p className="create-meeting-header">Enter Details</p>
@@ -32,7 +32,7 @@ const CreateMeetingForm = ({ formValues, setFormValues,handleSubmit }) => {
         Add Guests
       </Button>
       <AntdTextArea
-        label="Please share anything"
+        label="Please share anything that will help prepare for our meeting"
         value={formValues.comment}
         onChange={(e) =>
           setFormValues({ ...formValues, comment: e.target.value })
