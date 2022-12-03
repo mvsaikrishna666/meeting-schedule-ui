@@ -1,36 +1,61 @@
-import React from "react";
-import AntdInput from "../atndInput/input";
+import React, { useState } from "react";
 import "./createMeeting.css";
-import { Button } from "antd";
-import AntdTextArea from "../antdTextArea/antdTextArea";
+import { Button, Modal, message } from "antd";
+import CreateMeetingForm from "./createMeetingForm";
+
+const initialFormValues = {
+  name: "",
+  email: "",
+  comment: "",
+};
 
 const CreateMeeting = () => {
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const [messageApi, contextHolder] = message.useMessage();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const success = () => {
+    messageApi.open({
+      type: "success",
+      content: "Meeting Scheduled",
+    });
+  };
+
+  const error = () => {
+    messageApi.open({
+      type: "error",
+      content: "Please fill all the fields",
+    });
+  };
+  const handleSubmit = () => {
+    let validate = Object.values(formValues).every((x) => x !== "");
+    if (validate) {
+      setIsModalOpen(true);
+    } else {
+      error();
+    }
+  };
   return (
     <div className="create-meeting-wrapper">
-      <p className="create-meeting-header">Enter Details</p>
-      <AntdInput label="Name *" />
-      <AntdInput label="Email *" />
-      <Button
-        style={{
-          color: "#1677ff",
-          borderColor: "#1677ff",
-          marginBottom: "20px",
+      {contextHolder}
+      <CreateMeetingForm
+        formValues={formValues}
+        setFormValues={setFormValues}
+        handleSubmit={handleSubmit}
+      />
+      <Modal
+        title="Event Details"
+        open={isModalOpen}
+        onOk={() => {
+          setIsModalOpen(false);
+          setFormValues(initialFormValues);
+          success();
         }}
-        type="default"
-        shape="round"
-        size="large"
+        onCancel={() => setIsModalOpen(false)}
       >
-        Add Guests
-      </Button>
-      <AntdTextArea label="Please share anything" />
-      <Button
-        style={{ marginTop: "32px" }}
-        type="primary"
-        shape="round"
-        size="large"
-      >
-        Schedule Event
-      </Button>
+        <p>{formValues.name}</p>
+        <p>{formValues.email}</p>
+        <p>{formValues.comment}</p>
+      </Modal>
     </div>
   );
 };
