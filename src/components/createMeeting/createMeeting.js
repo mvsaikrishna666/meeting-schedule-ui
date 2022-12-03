@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./createMeeting.css";
-import { Button, Modal, message } from "antd";
+import { Modal, message } from "antd";
 import CreateMeetingForm from "./createMeetingForm";
 
 const initialFormValues = {
@@ -52,9 +52,9 @@ const CreateMeeting = () => {
         }}
         onCancel={() => setIsModalOpen(false)}
       >
-        <p>{formValues.name}</p>
-        <p>{formValues.email}</p>
-        <p>{formValues.comment}</p>
+        <p>Name: {formValues.name}</p>
+        <p>Email: {formValues.email}</p>
+        <p>Comment: {formValues.comment}</p>
       </Modal>
     </div>
   );

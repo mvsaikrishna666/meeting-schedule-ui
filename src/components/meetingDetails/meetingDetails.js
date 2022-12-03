@@ -1,19 +1,18 @@
 import React from "react";
 import "./meetingDetails.css";
-const MeetingDetails = () => {
+const MeetingDetails = ({ name, title, duration, time, timeZone }) => {
   return (
     <div className="meeting-details-wrapper">
-      <p className="meeting-attendee">Gaurav Garg</p>
-      <p className="meeting-title"> 15 Minute meeting</p>
+      <p className="meeting-attendee">{name}</p>
+      <p className="meeting-title">{title}</p>
       <p className="meeting-duration">
-        <i class="fa-sharp fa-solid fa-clock"></i> 15 min
+        <i className="fa-sharp fa-solid fa-clock"></i> {duration}
       </p>
       <p className="meeting-time">
-        <i class="fa-regular fa-calendar"></i> 9:00am - 9:30am, Friday,
-        September 10 2022
+        <i className="fa-regular fa-calendar"></i> {time}
       </p>
       <p className="meeting-timezone">
-        <i class="fa-solid fa-globe"></i> Indian Standard Time
+        <i className="fa-solid fa-globe"></i> {timeZone}
       </p>
     </div>
   );
