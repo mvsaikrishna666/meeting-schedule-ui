@@ -1,0 +1,30 @@
+.meeting-details-wrapper {
+  min-width: 300px;
+  width: 40%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: rgb(158, 155, 155);
+  padding: 20px;
+}
+.meeting-details-wrapper > p > i {
+  margin-right: 4px;
+}
+.meeting-attendee {
+  font-size: 16px;
+  margin: 0;
+}
+.meeting-title {
+  font-size: 24px;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0 0 12px 0;
+}
+.meeting-duration {
+  font-size: 12px;
+}
+.meeting-time {
+  font-size: 12px;
+}
+.meeting-timezone {
+  font-size: 12px;
+}
